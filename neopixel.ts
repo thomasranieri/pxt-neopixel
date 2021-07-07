@@ -50,6 +50,7 @@ namespace neopixel {
         // TODO: encode as bytes instead of 32bit
         brightness: number;
         start: number; // start offset in LED strip
+        reverse: boolean;
         _length: number; // number of LEDs
         _mode: NeoPixelMode;
         _matrixWidth: number; // number of leds in a matrix - if any
@@ -325,7 +326,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% parts="neopixel"
         //% blockSetVariable=range
-        range(start: number, length: number): Strip {
+        range(start: number, length: number, reverse: boolean = false): Strip {
             start = start >> 0;
             length = length >> 0;
             let strip = new Strip();
@@ -333,6 +334,7 @@ namespace neopixel {
             strip.pin = this.pin;
             strip.brightness = this.brightness;
             strip.start = this.start + Math.clamp(0, this._length - 1, start);
+            strip.reverse = reverse;
             strip._length = Math.clamp(0, this._length - (strip.start - this.start), length);
             strip._matrixWidth = 0;
             strip._mode = this._mode;
@@ -449,6 +451,12 @@ namespace neopixel {
                 return;
 
             let stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+
+            
+            
+            if (this.reverse) {
+                pixeloffset = this.length() - pixeloffset;
+            }
             pixeloffset = (pixeloffset + this.start) * stride;
 
             let red = unpackR(rgb);
