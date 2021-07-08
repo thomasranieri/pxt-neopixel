@@ -455,7 +455,7 @@ namespace neopixel {
             
             
             if (this.reverse) {
-                pixeloffset = this.length() - pixeloffset;
+                pixeloffset = this.length() - 1 - pixeloffset;
             }
             pixeloffset = (pixeloffset + this.start) * stride;
 
