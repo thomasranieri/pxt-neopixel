@@ -9,7 +9,7 @@
     },
     "files": [
         "README.md",
-        "neopixel.ts",
+        "neopixel_reverse.ts",
         "_locales/ja/neopixel-strings.json",
         "_locales/de/neopixel-strings.json",
         "_locales/de/neopixel-jsdoc-strings.json",
