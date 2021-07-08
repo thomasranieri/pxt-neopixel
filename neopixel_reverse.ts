@@ -2,10 +2,6 @@
  * Well known colors for a NeoPixel strip
  */
 
-if(false) {
-    //dummy commit to test GitHub actions
-}
-
 enum NeoPixelColors {
     //% block=red
     Red = 0xFF0000,
